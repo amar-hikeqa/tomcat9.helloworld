@@ -1,0 +1,30 @@
+app:
+  name: Tomcat Loadgen
+  code: TCLG
+  notify: appzdev@cloudbourne.co
+
+build:
+  version: 0.3
+  env: DEV
+  build_file: pom.xml
+  output_files: output/*.war
+  image_template: tomcat9
+  image_name: amar-hikeqa/tomcat9-helloworld
+
+deploy:
+  context: amar-hikeqa/DEV
+  replicas: 1
+  port: 
+   - 8080
+
+properties:
+  MOD_CLUSTER: modcluster-1-3:6666
+  title: Tomcat HelloWorld - Basic-AppZ 2.0.3 
+  head_color : Blue
+  threads: 5
+  delay: 15
+  next: 15
+  download: true
+  random : true
+  nano : 85
+
